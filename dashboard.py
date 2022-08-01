@@ -1,3 +1,5 @@
+from itertools import count
+import sqlite3
 from struct import pack
 from tkinter import *
 from datetime import *
@@ -74,12 +76,66 @@ def BalM():
     a = "N26,599,500"
     BalVar.set(a)
 
+def SWSum():
+    db = sqlite3.connect('GLBL.db')
+    cursor = db.cursor()
+    cursor.execute("select sum(quantity) from salesorder where product = 'Sachet Water'")
+    records = cursor.fetchall()
+
+    count = 0
+    for record in records:
+        value = record[0]
+        count = count + 1
+    
+    SWSumVar.set(value)
+
+    db.commit()
+    db.close()
+
+
+def BWSum():
+    db = sqlite3.connect('GLBL.db')
+    cursor = db.cursor()
+    cursor.execute("select sum(quantity) from salesorder where product = 'Bottled Water'")
+    records = cursor.fetchall()
+
+    count = 0
+    for record in records:
+        value = record[0]
+        count = count + 1
+    
+    BWSumVar.set(value)
+
+    db.commit()
+    db.close()
+
+
+def DSSum():
+    db = sqlite3.connect('GLBL.db')
+    cursor = db.cursor()
+    cursor.execute("select sum(quantity) from salesorder where product = 'Dee Speed'")
+    records = cursor.fetchall()
+
+    count = 0
+    for record in records:
+        value = record[0]
+        count = count + 1
+    
+    DSSumVar.set(value)
+
+    db.commit()
+    db.close()
+    
 
 # Variables
 InfVar = IntVar()
 OutfVar = IntVar()
 ExpVar = IntVar()
 BalVar = IntVar()
+SWSumVar = IntVar()
+BWSumVar = IntVar()
+DSSumVar = IntVar()
+
 
 # Top Menu Functions
 def Sales():
@@ -320,17 +376,17 @@ Sales.place(x=140, y=251)
 
 SWS = Label(Sales, text="Sachet Water:", font=('roboto', 10, 'bold'))
 SWS.place(x=10, y=10)
-SWSV = Label(Sales, text='(700)', font=('roboto', 10, 'bold'), fg='green')
+SWSV = Label(Sales, textvariable=SWSumVar, font=('roboto', 10, 'bold'), fg='green')
 SWSV.place(x=110, y=10)
 
 BWS = Label(Sales, text="Bottle Water:", font=('roboto', 10, 'bold'))
 BWS.place(x=216, y=10)
-BWSV = Label(Sales, text='(1,700)', font=('roboto', 10, 'bold'), fg='green')
+BWSV = Label(Sales, textvariable=BWSumVar, font=('roboto', 10, 'bold'), fg='green')
 BWSV.place(x=316, y=10)
 
 DSS = Label(Sales, text="Dee Speed:", font=('roboto', 10, 'bold'))
 DSS.place(x=432, y=10)
-DSSV = Label(Sales, text='(1,000)', font=('roboto', 10, 'bold'), fg='green')
+DSSV = Label(Sales, textvariable=DSSumVar, font=('roboto', 10, 'bold'), fg='green')
 DSSV.place(x=532, y=10)
 
 # Footer Frames
@@ -368,10 +424,11 @@ ImageLabel.pack()
 
 
 
-
-
 InflowD()
 OutflowD()
 ExpD()
 BalD()
+SWSum()
+BWSum()
+DSSum()
 mainloop()
