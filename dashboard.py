@@ -13,6 +13,9 @@ window.geometry('800x500')
 window.title('SOAR ACCT (VERSION 1.28)')
 window.configure(bg='#f7f3f2')
 window.wm_iconbitmap('FMCG.ico')
+# window.rowconfigure(0, weight = 1)
+# window.columnconfigure(0, weight = 1)
+# window.state('zoomed')
 window.resizable(height=FALSE, width=FALSE)
 
 # Inflow Functions
