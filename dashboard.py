@@ -375,35 +375,3 @@ OutflowD()
 ExpD()
 BalD()
 mainloop()
-# class Application(tk.Tk):
-#     def __init__(self, *args, **kwargs):
-#         tk.Tk.__init__(self, *args, **kwargs)
-
-#         window = tk.Frame(self)
-#         window.pack()
-
-#         window.grid_columnconfigure(0, minsize = 500)
-#         window.grid_rowconfigure(0, minsize = 800)
-
-#         self.frames = {}
-#         count = 0
-#         for F in Dashboard:
-#             frame = F(window, self)
-#             self.frames[F] = frame
-#             frame.grid(row = 0, column = 0, sticky='nsew')
-
-#             count = count + 1
-
-#         self.show_frame(Dashboard)
-
-#         def show_frame(self, page):
-#             frame = self.frames[page]
-#             frame.tkraise()
-
-# app = Application()
-# app.mainloop()
-
-
-
-
-
