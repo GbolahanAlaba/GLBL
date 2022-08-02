@@ -22,7 +22,7 @@ class Dashboard:
         self.window.resizable(0, 0)
         
 
-# Inflow Functions
+        # Inflow Functions
         def InflowD():
             a = "N1,000,000"
             InfVar.set(a)
