@@ -8,14 +8,6 @@ import sqlite3
 import dashboard
 
 
-# window = Tk()
-# window.geometry('800x500')
-# window.title('SOAR ACCT (VERSION 1.28)')
-# window.configure(bg='#f7f3f2')
-# window.wm_iconbitmap('FMCG.ico')
-# window.resizable(height=FALSE, width=FALSE)
-
-
 class AddProduct:
     def __init__(self, window):
         self.window = window
