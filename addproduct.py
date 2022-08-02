@@ -6,13 +6,18 @@ from PIL import ImageTk, Image
 from tkcalendar import DateEntry
 import sqlite3
 import dashboard
+import sales
+import customers
+import addcustomer
+import salesorder
+
 
 
 class AddProduct:
     def __init__(self, window):
         self.window = window
         self.window.geometry('800x500')
-        self.window.title('SOAR ACCT (VERSION 1.28)')
+        self.window.title('SOAR ACCT | Add Product Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
@@ -32,15 +37,6 @@ class AddProduct:
             PNameEntry.delete(0, END)
             
 
-        # Top Menu Functions
-        def Overview():
-            window.destroy()
-            import dashboard
-
-        # Side Menu Fuctions
-        def AddCustomer():
-            window.destroy()
-            import addcustomer
 
         # First Frame & Menu
         MenuFrame = Frame(window)
@@ -56,7 +52,7 @@ class AddProduct:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=3, pady=10)
 
-        Menu3 = Button(MenuFrame, text = 'Sales', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu3 = Button(MenuFrame, text = 'Sales', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.saless)
         Menu3.grid(row=0, column=4, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=5, pady=10)
@@ -71,7 +67,7 @@ class AddProduct:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=9, pady=10)
 
-        Menu6 = Button(MenuFrame, text = 'Customers', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu6 = Button(MenuFrame, text = 'Customers', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.cus)
         Menu6.grid(row=0, column=10, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=11, pady=10)
@@ -105,12 +101,12 @@ class AddProduct:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=AddCustomer)
+        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=3, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.salesor)
         SideMenu.grid(row=4, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=5, column=0, padx=10)
@@ -171,6 +167,30 @@ class AddProduct:
     def dashb(self):
         win = Toplevel()
         dashboard.Dashboard(win)
+        self.window.withdraw()
+        win.deiconify()
+
+    def saless(self):
+        win = Toplevel()
+        sales.Sales(win)
+        self.window.withdraw()
+        win.deiconify()
+
+    def cus(self):
+        win = Toplevel()
+        customers.Customers(win)
+        self.window.withdraw()
+        win.deiconify()
+
+    def addc(self):
+        win = Toplevel()
+        addcustomer.AddCustomer(win)
+        self.window.withdraw()
+        win.deiconify()
+
+    def salesor(self):
+        win = Toplevel()
+        salesorder.SalesOrder(win)
         self.window.withdraw()
         win.deiconify()
 
