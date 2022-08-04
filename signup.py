@@ -40,7 +40,7 @@ class Signup:
                 UsernameEntry.delete(0, END)
                 PasswordEntry.delete(0, END)
                 RePasswordEntry.delete(0, END)
-                
+
                 messagebox.showinfo("Welcome!", "You've signed up\n successfully")
                 self.signIN()
 
@@ -92,7 +92,7 @@ class Signup:
         SigninLabelButton = Button(SignUpFrame, text='Have an account? Sign In', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2', command=self.signIN)
         SigninLabelButton.grid(row=4, column=0, padx=10)
 
-        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', command=SIGNUP)
+        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', cursor='hand2', command=SIGNUP)
         SignUpButton.grid(row=4, column=1, padx=10, pady=5)
 
     def signIN(self):
