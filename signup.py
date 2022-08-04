@@ -1,7 +1,12 @@
 from tkinter import *
+from tkinter import ttk
+import messagebox
 from PIL import ImageTk, Image
 import sqlite3
 import signin
+
+
+
 
 class Signup:
     def __init__(self, window):
@@ -20,17 +25,28 @@ class Signup:
 
         # Functions
         def SIGNUP():
-            db = sqlite3.connect('GLBL.db')
-            cursor = db.cursor()
-            Val = ((UsernameEntry.get()), Password.get(), RePasswordEntry.get())
-            cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
-            
-            db.commit()
-            db.close()
+            if PasswordEntry.get() != RePasswordEntry.get():
+                messagebox.showerror("Error!", "Password Not Match")
+                
+            else:
+                db = sqlite3.connect('GLBL.db')
+                cursor = db.cursor()
+                Val = ((UsernameEntry.get()), PasswordEntry.get(), RePasswordEntry.get())
+                cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
+                
+                db.commit()
+                db.close()
 
-            UsernameEntry.delete(0, END)
-            PasswordEntry.delete(0, END)
-            RePasswordEntry.delete(0, END)
+                UsernameEntry.delete(0, END)
+                PasswordEntry.delete(0, END)
+                RePasswordEntry.delete(0, END)
+                
+                messagebox.showinfo("Welcome!", "You've signed up\n successfully")
+                self.signIN()
+
+                
+
+                
 
         # Frames
         TitleFrame = LabelFrame(window, bg='#bd2505')
