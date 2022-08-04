@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+import sqlite3
 import signin
 
 class Signup:
@@ -17,6 +18,19 @@ class Signup:
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
 
+        # Functions
+        def SIGNUP():
+            db = sqlite3.connect('GLBL.db')
+            cursor = db.cursor()
+            Val = ((UsernameEntry.get()), Password.get(), RePasswordEntry.get())
+            cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
+            
+            db.commit()
+            db.close()
+
+            UsernameEntry.delete(0, END)
+            PasswordEntry.delete(0, END)
+            RePasswordEntry.delete(0, END)
 
         # Frames
         TitleFrame = LabelFrame(window, bg='#bd2505')
@@ -62,7 +76,7 @@ class Signup:
         SigninLabelButton = Button(SignUpFrame, text='Have an account? Sign In', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2', command=self.signIN)
         SigninLabelButton.grid(row=4, column=0, padx=10)
 
-        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white')
+        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', command=SIGNUP)
         SignUpButton.grid(row=4, column=1, padx=10, pady=5)
 
     def signIN(self):
