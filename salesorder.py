@@ -107,7 +107,7 @@ class SalesOrder:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.cus)
+        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=3, column=0, padx=10)
