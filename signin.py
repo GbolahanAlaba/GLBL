@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image
 import dashboard
+import signup
 
 class Signin:
     def __init__(self, window):
@@ -74,12 +75,18 @@ class Signin:
         ForgetPwLabel.place(x=10, y=130)
 
 
-        SignupLabel = Button(SigninFrame, text='Create Account', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2')
+        SignupLabel = Button(SigninFrame, text='Create Account', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2', command=self.create)
         SignupLabel.place(x=130, y=130)
 
     def signin(self):
         win = Toplevel()
         dashboard.Dashboard(win)
+        self.window.withdraw()
+        win.deiconify()
+
+    def create(self):
+        win = Toplevel()
+        signup.Signup(win)
         self.window.withdraw()
         win.deiconify()
 
