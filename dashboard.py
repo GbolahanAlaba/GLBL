@@ -385,32 +385,32 @@ class Dashboard:
         Footer1 = LabelFrame(self.window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer1.pack(fill=Y, expand='yes')
         Footer1.place(x=140, y=326)
-        img1 = ImageTk.PhotoImage(Image.open("Sachetwater.jpg"))
-        ImageLabel = Label(Footer1, image = img1)
+        self.img1 = ImageTk.PhotoImage(Image.open("Sachetwater.jpg"))
+        ImageLabel = Label(Footer1, image = self.img1)
         ImageLabel.pack()
 
 
         Footer2 = LabelFrame(self.window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer2.pack(fill=Y, expand='yes')
         Footer2.place(x=302, y=326)
-        img2 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
-        ImageLabel = Label(Footer2, image = img2)
+        self.img2 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
+        ImageLabel = Label(Footer2, image = self.img2)
         ImageLabel.pack()
 
 
         Footer3 = LabelFrame(window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer3.pack(fill=Y, expand='yes')
         Footer3.place(x=464, y=326)
-        img3 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
-        ImageLabel = Label(Footer3, image = img3)
+        self.img3 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
+        ImageLabel = Label(Footer3, image = self.img3)
         ImageLabel.pack()
 
 
         Footer4 = LabelFrame(window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer4.pack(fill=Y, expand='yes')
         Footer4.place(x=625, y=326)
-        img4 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
-        ImageLabel = Label(Footer4, image = img4)
+        self.img4 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
+        ImageLabel = Label(Footer4, image = self.img4)
         ImageLabel.pack()
 
 
