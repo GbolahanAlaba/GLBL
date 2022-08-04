@@ -15,7 +15,13 @@ import addcustomer
 class SalesOrder:
     def __init__(self, window):
         self.window = window
-        self.window.geometry('800x500')
+        width = 800
+        height = 500
+        sw = self.window.winfo_screenwidth()
+        sh = self.window.winfo_screenwidth()
+        x = (sw/5)
+        y = (sh/11)
+        self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
         self.window.title('SOAR ACCT | Sales Order Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')

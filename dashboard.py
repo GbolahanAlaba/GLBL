@@ -15,7 +15,13 @@ import salesorder
 class Dashboard:
     def __init__(self, window):
         self.window = window
-        self.window.geometry('800x500')
+        width = 800
+        height = 500
+        sw = self.window.winfo_screenwidth()
+        sh = self.window.winfo_screenwidth()
+        x = (sw/5)
+        y = (sh/11)
+        self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
         self.window.title('SOAR ACCT | Dashboard')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
@@ -142,8 +148,7 @@ class Dashboard:
         SWSumVar = IntVar()
         BWSumVar = IntVar()
         DSSumVar = IntVar()
-
-            
+ 
 
         # First Frame & Menus
         MenuFrame = Frame(window)
@@ -200,7 +205,6 @@ class Dashboard:
 
 
         # Second Frames
-
         Frame1 = LabelFrame(window, height=120, width=800)
         Frame1.pack(fill=X, expand='no', padx=10, pady=10)
 
@@ -378,15 +382,15 @@ class Dashboard:
         DSSV.place(x=532, y=10)
 
         # Footer Frames
-        Footer1 = LabelFrame(window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
+        Footer1 = LabelFrame(self.window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer1.pack(fill=Y, expand='yes')
         Footer1.place(x=140, y=326)
-        img1 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
+        img1 = ImageTk.PhotoImage(Image.open("Sachetwater.jpg"))
         ImageLabel = Label(Footer1, image = img1)
         ImageLabel.pack()
 
 
-        Footer2 = LabelFrame(window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
+        Footer2 = LabelFrame(self.window, text='', height=120, width=152, font=('roboto', 9, 'bold'), fg='#d11c03')
         Footer2.pack(fill=Y, expand='yes')
         Footer2.place(x=302, y=326)
         img2 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
@@ -408,8 +412,6 @@ class Dashboard:
         img4 = ImageTk.PhotoImage(Image.open("SachetWater.jpg"))
         ImageLabel = Label(Footer4, image = img4)
         ImageLabel.pack()
-
-
 
 
         InflowD()
