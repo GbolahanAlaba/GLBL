@@ -24,8 +24,8 @@ class Signup:
 
         # Functions
         def SIGNUP():
-            if UsernameEntry.get() and PasswordEntry.get() and RePasswordEntry.get() == "":
-                messagebox.showerror("Error!", "Field cannot\n be empty")
+            if not UsernameEntry.get() or not PasswordEntry.get() or not RePasswordEntry.get():
+                messagebox.showerror("Error!", "Field(s) cannot\nbe empty")
 
             elif PasswordEntry.get() != RePasswordEntry.get():
                 messagebox.showerror("Error!", "Password Not Match")
@@ -73,8 +73,19 @@ class Signup:
         Username = Label(SignUpFrame, text='Username', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         Username.grid(row=1, column=0, padx=15, pady=5)
 
+        # def on_enter(e):
+        #     UsernameEntry.delete(0, 'end')
+
+        # def on_leave(e):
+        #     name = UsernameEntry.get()
+        #     if name == '':
+        #         UsernameEntry.insert(0, 'Enter Your Username')
+
         UsernameEntry = Entry(SignUpFrame, font=('roboto', 10, 'bold'), width=22, bd=2, relief='groove')
         UsernameEntry.grid(row=1, column=1, padx=10, pady=5)
+        # UsernameEntry.insert(0, 'Enter Your Username')
+        # UsernameEntry.bind('<FocusIn>', on_enter)
+        # UsernameEntry.bind('<FocusOut>', on_leave)
 
 
         Password = Label(SignUpFrame, text='Password', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
@@ -82,6 +93,7 @@ class Signup:
 
         PasswordEntry = Entry(SignUpFrame, font=('roboto', 10, 'bold'), show='*', width=22, bd=2, relief='groove')
         PasswordEntry.grid(row=2, column=1, padx=10, pady=5)
+        
 
         RePassword = Label(SignUpFrame, text='Re-type Password', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         RePassword.grid(row=3, column=0, padx=15, pady=5)
