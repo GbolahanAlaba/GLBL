@@ -31,7 +31,7 @@ class Sales:
         def SalesData():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute('select salesorder.sid, customers.name, salesorder.product, salesorder.quantity, salesorder.rate, salesorder.amount, salesorder.date from salesorder inner join customers on salesorder.CID = customers.CID')
+            cursor.execute('select sales.sid, customers.name, sales.product, sales.quantity, sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID')
             records = cursor.fetchall()
             
             global count
@@ -66,7 +66,7 @@ class Sales:
         def Sum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute('select sum(amount) from salesorder')
+            cursor.execute('select sum(amount) from sales')
             records = cursor.fetchall()
 
             count = 0

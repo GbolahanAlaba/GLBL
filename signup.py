@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import ttk
 import messagebox
 from PIL import ImageTk, Image
 import sqlite3
@@ -25,7 +24,10 @@ class Signup:
 
         # Functions
         def SIGNUP():
-            if PasswordEntry.get() != RePasswordEntry.get():
+            if UsernameEntry.get() and PasswordEntry.get() and RePasswordEntry.get() == "":
+                messagebox.showerror("Error!", "Field cannot\n be empty")
+
+            elif PasswordEntry.get() != RePasswordEntry.get():
                 messagebox.showerror("Error!", "Password Not Match")
                 
             else:
