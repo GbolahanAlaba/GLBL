@@ -46,6 +46,13 @@ class Signin:
         Username = Label(SigninFrame, text='Username', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         Username.grid(row=0, column=0, padx=20, pady=10)
 
+        def signin(self):
+            if UsernameEntry.get() and PasswordEntry.get() == 'admin':
+                win = Toplevel()
+                dashboard.Dashboard(win)
+                self.window.withdraw()
+                win.deiconify()
+
         UsernameEntry = Entry(SigninFrame, font=('roboto', 10, 'bold'), width=22, bd=2, relief='groove')
         UsernameEntry.grid(row=0, column=1, padx=10, pady=10)
         # UserEntry.insert(1, 'Enter Your Username')
@@ -78,11 +85,6 @@ class Signin:
         SignupLabel = Button(SigninFrame, text='Create Account', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2', command=self.create)
         SignupLabel.place(x=130, y=130)
 
-    def signin(self):
-        win = Toplevel()
-        dashboard.Dashboard(win)
-        self.window.withdraw()
-        win.deiconify()
 
     def create(self):
         win = Toplevel()
