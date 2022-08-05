@@ -1,4 +1,6 @@
+from email import message
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk, Image
 import dashboard
 import signup
@@ -46,8 +48,12 @@ class Signin:
         Username = Label(SigninFrame, text='Username', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         Username.grid(row=0, column=0, padx=20, pady=10)
 
-        def signin(self):
-            if UsernameEntry.get() and PasswordEntry.get() == 'admin':
+        def signin():
+            if not UsernameEntry.get() or not PasswordEntry.get():
+                messagebox.showerror('Error!', 'Fied(s) cannot\nbe empty')
+            elif UsernameEntry.get() and PasswordEntry.get() != 'admin':
+                messagebox.showerror('Error!', 'Incorrect login details')
+            else:
                 win = Toplevel()
                 dashboard.Dashboard(win)
                 self.window.withdraw()
@@ -70,7 +76,7 @@ class Signin:
         ChkButton.grid(row=2, column=0, pady=5)
 
 
-        SigninButton = Button(SigninFrame, text='Sign in', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', command=self.signin)
+        SigninButton = Button(SigninFrame, text='Sign in', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', command=signin)
         SigninButton.place(x=150, y=93)
 
 

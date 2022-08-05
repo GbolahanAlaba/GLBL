@@ -93,7 +93,7 @@ class Dashboard:
         def SWSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from salesorder where product = 'Sachet Water'")
+            cursor.execute("select sum(quantity) from sales where product = 'Sachet Water'")
             records = cursor.fetchall()
 
             count = 0
@@ -110,7 +110,7 @@ class Dashboard:
         def BWSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from salesorder where product = 'Bottled Water'")
+            cursor.execute("select sum(quantity) from sales where product = 'Bottled Water'")
             records = cursor.fetchall()
 
             count = 0
@@ -127,7 +127,7 @@ class Dashboard:
         def DSSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from salesorder where product = 'Dee Speed'")
+            cursor.execute("select sum(quantity) from sales where product = 'Dee Speed'")
             records = cursor.fetchall()
 
             count = 0
