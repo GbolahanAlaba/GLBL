@@ -23,7 +23,7 @@ class Customers:
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('SOAR ACCT | Customers Page')
+        self.window.title('TCP Management | Customers Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
