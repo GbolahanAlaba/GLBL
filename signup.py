@@ -1,8 +1,10 @@
+import ast
 from tkinter import *
 import messagebox
 from PIL import ImageTk, Image
 import sqlite3
 import signin
+
 
 
 
@@ -23,28 +25,28 @@ class Signup:
         self.window.resizable(0, 0)
 
         # Functions
-        def SIGNUP():
-            if not UsernameEntry.get() or not PasswordEntry.get() or not RePasswordEntry.get():
-                messagebox.showerror("Error!", "Field(s) cannot\nbe empty")
+        # def SIGNUP():
+        #     if not UsernameEntry.get() or not PasswordEntry.get() or not RePasswordEntry.get():
+        #         messagebox.showerror("Error!", "Field(s) cannot\nbe empty")
 
-            elif PasswordEntry.get() != RePasswordEntry.get():
-                messagebox.showerror("Error!", "Password Not Match")
+        #     elif PasswordEntry.get() != RePasswordEntry.get():
+        #         messagebox.showerror("Error!", "Password Not Match")
                 
-            else:
-                db = sqlite3.connect('GLBL.db')
-                cursor = db.cursor()
-                Val = ((UsernameEntry.get()), PasswordEntry.get(), RePasswordEntry.get())
-                cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
+        #     else:
+        #         db = sqlite3.connect('GLBL.db')
+        #         cursor = db.cursor()
+        #         Val = ((UsernameEntry.get()), PasswordEntry.get(), RePasswordEntry.get())
+        #         cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
                 
-                db.commit()
-                db.close()
+        #         db.commit()
+        #         db.close()
 
-                UsernameEntry.delete(0, END)
-                PasswordEntry.delete(0, END)
-                RePasswordEntry.delete(0, END)
+        #         UsernameEntry.delete(0, END)
+        #         PasswordEntry.delete(0, END)
+        #         RePasswordEntry.delete(0, END)
 
-                messagebox.showinfo("Welcome!", "You've signed up\n successfully")
-                self.signIN()
+        #         messagebox.showinfo("Welcome!", "You've signed up\n successfully")
+        #         self.signIN()
 
                 
 
@@ -70,23 +72,44 @@ class Signup:
         TitleLabel = Label(TitleFrame, text='New Employee?, Sign Up Here!', font=('roboto', 16, 'bold'), bg='#bd2505', fg='white')
         TitleLabel.pack(fill=X, expand='yes', padx=10, pady=10)
 
+        def signupp():
+            if not UsernameEntry.get() or not PasswordEntry.get() or not RePasswordEntry.get():
+                messagebox.showerror("Error!", "Field(s) cannot\nbe empty")
+
+            elif PasswordEntry.get() != RePasswordEntry.get():
+                messagebox.showerror("Error!", "Password Not Match")
+            
+            else:
+
+                try:
+                    file = open('datasheet.txt', 'r+')
+                    d = file.read()
+                    r = ast.literal_eval(d)
+
+                    dict2 = {UsernameEntry.get():PasswordEntry.get()}
+                    r.update(dict2)
+                    file.truncate(0)
+                    file = open('datasheet.txt', 'w')
+                    w = file.write(str(r))
+                
+                finally:
+                    UsernameEntry.delete(0, END)
+                    PasswordEntry.delete(0, END)
+                    RePasswordEntry.delete(0, END)
+
+                    messagebox.showinfo("Welcome!", "You've signed up\n successfully")
+
+                    win = Toplevel()
+                    signin.Signin(win)
+                    self.window.withdraw()
+                    win.deiconify()
+                
+
         Username = Label(SignUpFrame, text='Username', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         Username.grid(row=1, column=0, padx=15, pady=5)
 
-        # def on_enter(e):
-        #     UsernameEntry.delete(0, 'end')
-
-        # def on_leave(e):
-        #     name = UsernameEntry.get()
-        #     if name == '':
-        #         UsernameEntry.insert(0, 'Enter Your Username')
-
         UsernameEntry = Entry(SignUpFrame, font=('roboto', 10, 'bold'), width=22, bd=2, relief='groove')
         UsernameEntry.grid(row=1, column=1, padx=10, pady=5)
-        # UsernameEntry.insert(0, 'Enter Your Username')
-        # UsernameEntry.bind('<FocusIn>', on_enter)
-        # UsernameEntry.bind('<FocusOut>', on_leave)
-
 
         Password = Label(SignUpFrame, text='Password', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         Password.grid(row=2, column=0, padx=15, pady=5)
@@ -94,7 +117,6 @@ class Signup:
         PasswordEntry = Entry(SignUpFrame, font=('roboto', 10, 'bold'), show='*', width=22, bd=2, relief='groove')
         PasswordEntry.grid(row=2, column=1, padx=10, pady=5)
         
-
         RePassword = Label(SignUpFrame, text='Re-type Password', font=('roboto', 11, 'bold'), bg='#f7f3f2', fg='#bd2505')
         RePassword.grid(row=3, column=0, padx=15, pady=5)
 
@@ -106,7 +128,7 @@ class Signup:
         SigninLabelButton = Button(SignUpFrame, text='Have an account? Sign In', font=('roboto', 8, 'bold', 'underline'), bg='#f7f3f2', fg='#1a3783', bd=0, cursor='hand2', command=self.signIN)
         SigninLabelButton.grid(row=4, column=0, padx=10)
 
-        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', cursor='hand2', command=SIGNUP)
+        SignUpButton = Button(SignUpFrame, text='Sign Up', font=('roboto', 10, 'bold'), bg='#bd2505', fg='white', cursor='hand2', command=signupp)
         SignUpButton.grid(row=4, column=1, padx=10, pady=5)
 
     def signIN(self):
