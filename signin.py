@@ -1,3 +1,4 @@
+import ast
 from email import message
 from tkinter import *
 from tkinter import messagebox
@@ -49,15 +50,25 @@ class Signin:
         Username.grid(row=0, column=0, padx=20, pady=10)
 
         def signin():
+
+            file = open('datasheet.txt', 'r')
+            d = file.read()
+            r = ast.literal_eval(d)
+            file.close()
+
             if not UsernameEntry.get() or not PasswordEntry.get():
                 messagebox.showerror('Error!', 'Fied(s) cannot\nbe empty')
-            elif UsernameEntry.get() and PasswordEntry.get() != 'admin':
-                messagebox.showerror('Error!', 'Incorrect login details')
-            else:
+
+            elif UsernameEntry.get() in r.keys() and PasswordEntry.get() == r[UsernameEntry.get()]:
+
                 win = Toplevel()
                 dashboard.Dashboard(win)
                 self.window.withdraw()
                 win.deiconify()
+
+            else:
+                messagebox.showerror('Invalid!', 'Incorrect login details')
+                
 
         UsernameEntry = Entry(SigninFrame, font=('roboto', 10, 'bold'), width=22, bd=2, relief='groove')
         UsernameEntry.grid(row=0, column=1, padx=10, pady=10)
