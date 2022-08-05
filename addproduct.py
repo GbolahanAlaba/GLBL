@@ -1,9 +1,11 @@
+from email import message
 from tkinter import *
 from tkinter import ttk
 from datetime import *
 from time import strftime
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
+import messagebox
 import sqlite3
 import dashboard
 import sales
@@ -31,16 +33,21 @@ class AddProduct:
 
         # Database
         def AddProductDB():
-            db = sqlite3.connect('GLBL.db')
-            cursor = db.cursor()
+            if not PNameEntry.get() or not Combo.get() or not DateEnt.get():
+                messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
 
-            Val = [(PNameEntry.get()), (Combo.get()), (DateEnt.get())]
+            else:
+                db = sqlite3.connect('GLBL.db')
+                cursor = db.cursor()
+                Val = [(PNameEntry.get()), (Combo.get()), (DateEnt.get())]
+                cursor.executemany('Insert into products (ProductName, Unit, Date) values(?, ?, ?)', [Val])
 
-            cursor.executemany('Insert into products (ProductName, Unit, Date) values(?, ?, ?)', [Val])
-            db.commit()
-            db.close()
+                db.commit()
+                db.close()
 
-            PNameEntry.delete(0, END)
+                PNameEntry.delete(0, END)
+
+                messagebox.showinfo('Great!', 'Product added')
             
 
 

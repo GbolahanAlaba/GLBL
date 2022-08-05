@@ -4,6 +4,7 @@ from datetime import *
 from time import strftime
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
+import messagebox
 import sqlite3
 import dashboard
 import sales
@@ -30,16 +31,29 @@ class AddCustomer:
 
         # Database
         def AddCustomer():
-            db = sqlite3.connect('GLBL.db')
-            cursor = db.cursor()
-            Val = ((NameEntry.get()), Combo.get(), MobileEntry.get(), DateEnt.get())
-            cursor.executemany('insert into customers (Name, Location, MobileNo, Date) values(?, ?, ?, ?)', [Val])
+            if not NameEntry.get() or not Combo.get() or MobileEntry.get() or not DateEnt.get():
+                messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
-            db.commit()
-            db.close()
+            else:
+                db = sqlite3.connect('GLBL.db')
+                cursor = db.cursor()
+                Val = ((NameEntry.get()), Combo.get(), MobileEntry.get(), DateEnt.get())
+                cursor.executemany('insert into customers (Name, Location, MobileNo, Date) values(?, ?, ?, ?)', [Val])
+                
+                db.commit()
+                db.close()
 
-            NameEntry.delete(0, END)
-            MobileEntry.delete(0, END)
+                NameEntry.delete(0, END)
+                MobileEntry.delete(0, END)
+
+                messagebox.showinfo('Great!', 'Customer added successfully')
+
+            
+            
+            
+                
+
+                
 
 
 
