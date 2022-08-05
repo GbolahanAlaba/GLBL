@@ -22,7 +22,7 @@ class Sales:
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('SOAR ACCT | Sales page')
+        self.window.title('TCP Management | Sales page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
@@ -43,24 +43,6 @@ class Sales:
 
             db.commit()
             db.close()
-
-
-        # def src():
-        #     db = sqlite3.connect('GLBL.db')
-        #     cursor = db.cursor()
-        #     val = SrcDate.get()
-        #     cursor.execute('select * from salesorder where date = ?', [val])
-        #     records = cursor.fetchall()
-        #     global count
-        #     count = 0
-        #     for record in records:
-        #         SalesView.insert(parent='', index='end', iid='count', values=(record[0], record[1],
-        #                             record[2], record[3], record[4], record[5], record[6]))
-        #         count = count + 1
-
-            
-            # db.commit()
-            # db.close()
 
 
         def Sum():

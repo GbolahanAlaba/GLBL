@@ -19,38 +19,11 @@ class Signup:
         x = (sw/4)
         y = (sh/7)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('SOAR ACCT | Sign In Page')
+        self.window.title('TCP Management | Sign In Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
-        self.window.resizable(0, 0)
-
-        # Functions
-        # def SIGNUP():
-        #     if not UsernameEntry.get() or not PasswordEntry.get() or not RePasswordEntry.get():
-        #         messagebox.showerror("Error!", "Field(s) cannot\nbe empty")
-
-        #     elif PasswordEntry.get() != RePasswordEntry.get():
-        #         messagebox.showerror("Error!", "Password Not Match")
-                
-        #     else:
-        #         db = sqlite3.connect('GLBL.db')
-        #         cursor = db.cursor()
-        #         Val = ((UsernameEntry.get()), PasswordEntry.get(), RePasswordEntry.get())
-        #         cursor.executemany('insert into signup (Username, Password, Repassword) values(?, ?, ?)', [Val])
-                
-        #         db.commit()
-        #         db.close()
-
-        #         UsernameEntry.delete(0, END)
-        #         PasswordEntry.delete(0, END)
-        #         RePasswordEntry.delete(0, END)
-
-        #         messagebox.showinfo("Welcome!", "You've signed up\n successfully")
-        #         self.signIN()
-
-                
-
-                
+        self.window.resizable(0, 0)            
+        
 
         # Frames
         TitleFrame = LabelFrame(window, bg='#bd2505')

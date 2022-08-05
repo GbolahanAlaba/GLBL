@@ -16,7 +16,7 @@ class Signin:
         x = (sw/3)
         y = (sh/7)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('SOAR ACCT | Sign In Page')
+        self.window.title('TCP Management | Sign In Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
