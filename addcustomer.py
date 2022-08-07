@@ -31,13 +31,13 @@ class AddCustomer:
 
         # Database
         def AddCustomer():
-            if not NameEntry.get() or not Combo.get() or MobileEntry.get() or not DateEnt.get():
+            if not NameEntry.get() or not CCombo.get() or not MobileEntry.get() or not CDateEntry.get():
                 messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
             else:
                 db = sqlite3.connect('GLBL.db')
                 cursor = db.cursor()
-                Val = ((NameEntry.get()), Combo.get(), MobileEntry.get(), DateEnt.get())
+                Val = ((NameEntry.get()), CCombo.get(), MobileEntry.get(), CDateEntry.get())
                 cursor.executemany('insert into customers (Name, Location, MobileNo, Date) values(?, ?, ?, ?)', [Val])
                 
                 db.commit()
@@ -47,15 +47,9 @@ class AddCustomer:
                 MobileEntry.delete(0, END)
 
                 messagebox.showinfo('Great!', 'Customer added successfully')
-
+      
+ 
             
-            
-            
-                
-
-                
-
-
 
 
         # First Frame & Menu
@@ -173,10 +167,10 @@ class AddCustomer:
 
         Location = Label(AddCus, text='Location', font=('roboto', 10, 'bold'))
         Location.place(x=250, y=20)
-        Combo = ttk.Combobox(AddCus, value=List)
-        Combo.current(0)
-        Combo.bind('<<<ComboboxSelected>>>')
-        Combo.place(x=250, y=45)
+        CCombo = ttk.Combobox(AddCus, value=List)
+        CCombo.current(0)
+        CCombo.bind('<<<ComboboxSelected>>>')
+        CCombo.place(x=250, y=45)
 
         Mobile = Label(AddCus, text="Mobile No.", font=('roboto', 10, 'bold'))
         Mobile.place(x=420, y=20)
@@ -185,8 +179,8 @@ class AddCustomer:
 
         Date = Label(AddCus, text='Date', font=('roboto', 10, 'bold'))
         Date.place(x=20, y=90)
-        DateEnt = DateEntry(AddCus, selectmode='day')
-        DateEnt.place(x=20, y=115)
+        CDateEntry = DateEntry(AddCus, selectmode='day')
+        CDateEntry.place(x=20, y=115)
 
         Btn = Button(AddCus, text='Add Customer', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=AddCustomer)
         Btn.place(x=20, y=175)

@@ -33,13 +33,13 @@ class AddProduct:
 
         # Database
         def AddProductDB():
-            if not PNameEntry.get() or not Combo.get() or not DateEnt.get():
+            if not PNameEntry.get() or not PCombo.get() or not PDateEntry.get():
                 messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
 
             else:
                 db = sqlite3.connect('GLBL.db')
                 cursor = db.cursor()
-                Val = [(PNameEntry.get()), (Combo.get()), (DateEnt.get())]
+                Val = [(PNameEntry.get()), (PCombo.get()), (PDateEntry.get())]
                 cursor.executemany('Insert into products (ProductName, Unit, Date) values(?, ?, ?)', [Val])
 
                 db.commit()
@@ -161,17 +161,17 @@ class AddProduct:
         ]
 
 
-        Unit = Label(AddProd, text='Unit', font=('roboto', 10, 'bold'))
-        Unit.place(x=250, y=20)
-        Combo = ttk.Combobox(AddProd, value=List)
-        Combo.current(0)
-        Combo.bind('<<<ComboboxSelected>>>')
-        Combo.place(x=250, y=45)
+        PUnit = Label(AddProd, text='Unit', font=('roboto', 10, 'bold'))
+        PUnit.place(x=250, y=20)
+        PCombo = ttk.Combobox(AddProd, value=List)
+        PCombo.current(0)
+        PCombo.bind('<<<ComboboxSelected>>>')
+        PCombo.place(x=250, y=45)
 
-        Date = Label(AddProd, text='Date', font=('roboto', 10, 'bold'))
-        Date.place(x=20, y=90)
-        DateEnt = DateEntry(AddProd, selectmode='day')
-        DateEnt.place(x=20, y=115)
+        PDate = Label(AddProd, text='Date', font=('roboto', 10, 'bold'))
+        PDate.place(x=20, y=90)
+        PDateEntry = DateEntry(AddProd, selectmode='day')
+        PDateEntry.place(x=20, y=115)
 
         Btn = Button(AddProd, text='Add Product', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=AddProductDB)
         Btn.place(x=20, y=175)
