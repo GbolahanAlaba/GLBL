@@ -5,6 +5,7 @@ from time import strftime
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
 import sqlite3
+import signin
 import dashboard
 import sales
 import customers
@@ -83,7 +84,7 @@ class SalesOrder:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=13, pady=10)
 
-        Menu9 = Button(MenuFrame, text = 'Log Out', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu9 = Button(MenuFrame, text = 'Log Out', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.logout)
         Menu9.grid(row=0, column=14, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=15, pady=10)
@@ -214,6 +215,11 @@ class SalesOrder:
         self.window.withdraw()
         win.deiconify()
 
+    def logout(self):
+        win = Toplevel()
+        signin.Signin(win)
+        self.window.withdraw()
+        win.deiconify()
 
 def salesord():
     window = Tk()
