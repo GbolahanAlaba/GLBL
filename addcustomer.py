@@ -31,20 +31,20 @@ class AddCustomer:
 
         # Database
         def AddCustomer():
-            if not NameEntry.get() or not CCombo.get() or not MobileEntry.get() or not CDateEntry.get():
+            if not NameEntry.get() or not CCombo.get() or not CMobileEntry.get() or not CDateEntry.get():
                 messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
             else:
                 db = sqlite3.connect('GLBL.db')
                 cursor = db.cursor()
-                Val = ((NameEntry.get()), CCombo.get(), MobileEntry.get(), CDateEntry.get())
+                Val = ((NameEntry.get()), CCombo.get(), CMobileEntry.get(), CDateEntry.get())
                 cursor.executemany('insert into customers (Name, Location, MobileNo, Date) values(?, ?, ?, ?)', [Val])
                 
                 db.commit()
                 db.close()
 
                 NameEntry.delete(0, END)
-                MobileEntry.delete(0, END)
+                CMobileEntry.delete(0, END)
 
                 messagebox.showinfo('Great!', 'Customer added successfully')
       
@@ -165,20 +165,20 @@ class AddCustomer:
             'Others'
         ]
 
-        Location = Label(AddCus, text='Location', font=('roboto', 10, 'bold'))
-        Location.place(x=250, y=20)
+        CLocation = Label(AddCus, text='Location', font=('roboto', 10, 'bold'))
+        CLocation.place(x=250, y=20)
         CCombo = ttk.Combobox(AddCus, value=List)
         CCombo.current(0)
         CCombo.bind('<<<ComboboxSelected>>>')
         CCombo.place(x=250, y=45)
 
-        Mobile = Label(AddCus, text="Mobile No.", font=('roboto', 10, 'bold'))
-        Mobile.place(x=420, y=20)
-        MobileEntry = Entry(AddCus, bd=2, relief='groove', width=20, font=('roboto', 10, 'bold'))
-        MobileEntry.place(x=420, y=45)
+        CMobile = Label(AddCus, text="Mobile No.", font=('roboto', 10, 'bold'))
+        CMobile.place(x=420, y=20)
+        CMobileEntry = Entry(AddCus, bd=2, relief='groove', width=20, font=('roboto', 10, 'bold'))
+        CMobileEntry.place(x=420, y=45)
 
-        Date = Label(AddCus, text='Date', font=('roboto', 10, 'bold'))
-        Date.place(x=20, y=90)
+        CDate = Label(AddCus, text='Date', font=('roboto', 10, 'bold'))
+        CDate.place(x=20, y=90)
         CDateEntry = DateEntry(AddCus, selectmode='day')
         CDateEntry.place(x=20, y=115)
 
