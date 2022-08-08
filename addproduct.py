@@ -220,5 +220,3 @@ def addpro():
 
 if __name__ == '__main__':
     addpro()
-
-# mainloop()
