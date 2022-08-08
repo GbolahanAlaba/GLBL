@@ -47,7 +47,6 @@ class AddProduct:
                 db.close()
 
                 PNameEntry.delete(0, END)
-
                 messagebox.showinfo('Great!', 'Product added')
             
 
