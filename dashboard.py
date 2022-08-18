@@ -4,6 +4,7 @@ from datetime import *
 import tkinter as tk
 from time import strftime
 from PIL import ImageTk, Image
+import products
 import sales
 import customers
 import addproduct
@@ -160,7 +161,7 @@ class Dashboard:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=1, pady=10)
 
-        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.prod)
         Menu2.grid(row=0, column=2, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=3, pady=10)
@@ -422,6 +423,12 @@ class Dashboard:
         SWSum()
         BWSum()
         DSSum()
+
+    def prod(self):
+        win = Toplevel()
+        products.Products(win)
+        self.window.withdraw()
+        win.deiconify()
 
     def saless(self):
         win = Toplevel()

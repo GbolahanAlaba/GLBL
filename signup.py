@@ -52,6 +52,9 @@ class Signup:
             elif PasswordEntry.get() != RePasswordEntry.get():
                 messagebox.showerror("Error!", "Password Not Match")
             
+            elif UsernameEntry.get() in r.keys():
+                messagebox.showerror('Error!', 'Username Used')
+            
             else:
 
                 try:
