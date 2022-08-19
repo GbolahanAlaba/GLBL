@@ -1,4 +1,5 @@
 from itertools import count
+from os import X_OK
 from tkinter import *
 from tkinter import ttk
 from datetime import *
@@ -144,7 +145,7 @@ class Products:
 
         # Center Frames & Labels
         Sales = LabelFrame(window, text="Our Products", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
-        Sales.pack(fill=Y, expand='no')
+        Sales.pack(fill=X, expand='no')
         Sales.place(x=140, y=75)
 
         Style = ttk.Style()
@@ -168,8 +169,8 @@ class Products:
 
         SalesView.column('#0', width=0, stretch=NO)
         SalesView.column('PID', anchor=CENTER, width=70)
-        SalesView.column('PRODUCT NAME', anchor=CENTER, width=170)
-        SalesView.column('UNIT', anchor=CENTER, width=150)
+        SalesView.column('PRODUCT NAME', anchor=CENTER, width=140)
+        SalesView.column('UNIT', anchor=CENTER, width=120)
         SalesView.column('DATE', anchor=CENTER, width=75)
         
 
@@ -178,7 +179,16 @@ class Products:
         SalesView.heading('PRODUCT NAME', text='PRODUCT NAME', anchor=CENTER)
         SalesView.heading('UNIT', text='UNIT', anchor=CENTER)
         SalesView.heading('DATE', text='DATE', anchor=CENTER)
-        
+
+        LiveUp = Label(window, text='Products Live Updates', font=('roboto', 10, 'bold'), bg='#d11c03', fg='white')
+        LiveUp.place(x=617, y=82)
+
+        LiveUpF = LabelFrame(window, text='', width=190, height=226)
+        LiveUpF.pack(fill=Y, expand='no', side=RIGHT)
+        LiveUpF.place(x=600, y=115)
+
+        PEX = Label(LiveUpF, text='PP | PS | PQ', font=('roboto', 10, 'bold'))
+        PEX.place(x=50, y=2)
 
         # SrcDate = DateEntry(window, selectmode='day')
         # SrcDate.place(x=140, y=370)
