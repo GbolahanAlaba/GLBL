@@ -9,6 +9,7 @@ import messagebox
 import sqlite3
 import signin
 import dashboard
+import products
 import sales
 import customers
 import addcustomer
@@ -60,7 +61,7 @@ class AddProduct:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=1, pady=10)
 
-        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.prod)
         Menu2.grid(row=0, column=2, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=3, pady=10)
@@ -159,7 +160,8 @@ class AddProduct:
             'Unit 1',
             'Unit 2',
             'Unit 3',
-            'Unit 4'
+            'Unit 4',
+            'Unit 5'
         ]
 
 
@@ -182,6 +184,12 @@ class AddProduct:
     def dashb(self):
         win = Toplevel()
         dashboard.Dashboard(win)
+        self.window.withdraw()
+        win.deiconify()
+    
+    def prod(self):
+        win = Toplevel()
+        products.Products(win)
         self.window.withdraw()
         win.deiconify()
 
