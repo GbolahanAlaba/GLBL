@@ -349,17 +349,17 @@ class Dashboard:
         Prod.pack(fill=Y, expand='no')
         Prod.place(x=140, y=176)
 
-        SWP = Label(Prod, text="Sachet Water:", font=('roboto', 10, 'bold'))
+        SWP = Label(Prod, text="Product 1:", font=('roboto', 10, 'bold'))
         SWP.place(x=10, y=10)
         SWPV = Label(Prod, text='(1,700)', font=('roboto', 10, 'bold'), fg='#d11c03')
         SWPV.place(x=110, y=10)
 
-        BWP = Label(Prod, text="Bottle Water:", font=('roboto', 10, 'bold'))
+        BWP = Label(Prod, text="Product 2:", font=('roboto', 10, 'bold'))
         BWP.place(x=216, y=10)
         BWPV = Label(Prod, text='(4,700)', font=('roboto', 10, 'bold'), fg='#d11c03')
         BWPV.place(x=316, y=10)
 
-        DSP = Label(Prod, text="Dee Speed:", font=('roboto', 10, 'bold'))
+        DSP = Label(Prod, text="Product 3:", font=('roboto', 10, 'bold'))
         DSP.place(x=432, y=10)
         DSPV = Label(Prod, text='(2,700)', font=('roboto', 10, 'bold'), fg='#d11c03')
         DSPV.place(x=532, y=10)
@@ -368,17 +368,17 @@ class Dashboard:
         Sales.pack(fill=Y, expand='no')
         Sales.place(x=140, y=251)
 
-        SWS = Label(Sales, text="Sachet Water:", font=('roboto', 10, 'bold'))
+        SWS = Label(Sales, text="Product 1:", font=('roboto', 10, 'bold'))
         SWS.place(x=10, y=10)
         SWSV = Label(Sales, textvariable=SWSumVar, font=('roboto', 10, 'bold'), fg='green')
         SWSV.place(x=110, y=10)
 
-        BWS = Label(Sales, text="Bottle Water:", font=('roboto', 10, 'bold'))
+        BWS = Label(Sales, text="Product 2:", font=('roboto', 10, 'bold'))
         BWS.place(x=216, y=10)
         BWSV = Label(Sales, textvariable=BWSumVar, font=('roboto', 10, 'bold'), fg='green')
         BWSV.place(x=316, y=10)
 
-        DSS = Label(Sales, text="Dee Speed:", font=('roboto', 10, 'bold'))
+        DSS = Label(Sales, text="Product 3:", font=('roboto', 10, 'bold'))
         DSS.place(x=432, y=10)
         DSSV = Label(Sales, textvariable=DSSumVar, font=('roboto', 10, 'bold'), fg='green')
         DSSV.place(x=532, y=10)

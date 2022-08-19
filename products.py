@@ -187,8 +187,17 @@ class Products:
         LiveUpF.pack(fill=Y, expand='no', side=RIGHT)
         LiveUpF.place(x=600, y=115)
 
-        PEX = Label(LiveUpF, text='PP | PS | PQ', font=('roboto', 10, 'bold'))
-        PEX.place(x=50, y=2)
+        PEX = Label(LiveUpF, text='Product: Quantity Produced', font=('roboto', 10, 'bold')).place(x=1, y=2)
+
+        PP1 = Label(LiveUpF, text='Product 1:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=30)
+        PP2 = Label(LiveUpF, text='Product 2:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=50)
+        PP3 = Label(LiveUpF, text='Product 3:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=70)
+        PP4 = Label(LiveUpF, text='Product 4:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=90)
+        PPR1 = Label(LiveUpF, text='120000', font=('roboto', 10, 'bold')).place(x=80, y=30)
+        PPR2 = Label(LiveUpF, text='130000', font=('roboto', 10, 'bold')).place(x=80, y=50)
+        PPR3 = Label(LiveUpF, text='140000', font=('roboto', 10, 'bold')).place(x=80, y=70)
+        PPR4 = Label(LiveUpF, text='150000', font=('roboto', 10, 'bold')).place(x=80, y=90)
+        
 
         # SrcDate = DateEntry(window, selectmode='day')
         # SrcDate.place(x=140, y=370)
