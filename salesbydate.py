@@ -14,8 +14,10 @@ import customers
 import addproduct
 import addcustomer
 import addsales
+from searchsales import *
+import salesbydate
 
-class Sales:
+class SalesByDate:
     def __init__(self, window):
         self.window = window
         width = 800
@@ -25,7 +27,7 @@ class Sales:
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('TCP Management | Sales page')
+        self.window.title('TCP Management | Sales Search Result Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
@@ -34,9 +36,9 @@ class Sales:
         def SalesData():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute('select sales.sid, customers.name, sales.product, sales.quantity, sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID')
+            cursor.execute("select sales.sid, customers.name, sales.product, sales.quantity,"
+            "sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID where sales.date = '7/6/22'")
             records = cursor.fetchall()
-            
             global count
             count = 0
             for record in records:
@@ -51,7 +53,7 @@ class Sales:
         def Sum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute('select sum(amount) from sales')
+            cursor.execute("'select sum(amount) from sales where date = '7/6/22'")
             records = cursor.fetchall()
 
             count = 0
@@ -131,15 +133,18 @@ class Sales:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='View By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='View All Sales', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.saless)
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
+        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
+        DivLine.grid(row=3, column=0, padx=10)
 
-
+        SideMenu = Button(SideFrame, text='Search By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.searchsale)
+        SideMenu.grid(row=4, column=0, padx=10, pady=7)
 
 
 
         # Center Frames & Labels
-        Sales = LabelFrame(window, text="All Time Sales", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
+        Sales = LabelFrame(window, text="Search Results", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
         Sales.pack(fill=Y, expand='no')
         Sales.place(x=140, y=75)
 
@@ -243,17 +248,30 @@ class Sales:
         addsales.AddSales(win)
         self.window.withdraw()
         win.deiconify()
+
+    def searchsale(self):
+        win = Toplevel()
+        searchsales.SearchSales(win)
+        self.window.withdraw()
+        win.deiconify()
     
+    def salebydate(self):
+        win = Toplevel()
+        salesbydate.SalesByDate(win)
+        self.window.withdraw()
+        win.deiconify()
+
+
     def logout(self):
         win = Toplevel()
         signin.Signin(win)
         self.window.withdraw()
         win.deiconify()
 
-def sales():
+def salesbydate():
     window = Tk()
-    Sales(window)
+    SalesByDate(window)
     window.mainloop()
 
 if __name__ == '__main__':
-    sales()
+    salesbydate()

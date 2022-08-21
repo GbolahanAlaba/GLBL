@@ -4,6 +4,7 @@ from datetime import *
 from time import strftime
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
+import messagebox
 import sqlite3
 import signin
 import dashboard
@@ -26,25 +27,30 @@ class AddSales:
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('TCP Management | Sales Order Page')
+        self.window.title('TCP Management | Add Sales Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
 
         # Database
-        def SOrder():
-            db = sqlite3.connect('GLBL.db')
-            cursor = db.cursor()
-            Val = (CIDEntry.get(), Combo.get(), QtyEntry.get(), RateEntry.get(), AmtEntry.get(), DateEnt.get())
-            cursor.executemany('insert into Sales (CID, Product, Quantity, Rate, Amount, Date) values(?, ?, ?, ?, ?, ?)', [Val])
+        def Sale():
+            if not CIDEntry.get() or not QtyEntry.get() or not RateEntry.get():
+                messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
-            db.commit()
-            db.close()
+            else:
+                db = sqlite3.connect('GLBL.db')
+                cursor = db.cursor()
+                Val = (CIDEntry.get(), Combo.get(), QtyEntry.get(), RateEntry.get(), AmtEntry.get(), DateEnt.get())
+                cursor.executemany('insert into Sales (CID, Product, Quantity, Rate, Amount, Date) values(?, ?, ?, ?, ?, ?)', [Val])
+                
+                db.commit()
+                db.close()
 
-            CIDEntry.delete(0, END)
-            QtyEntry.delete(0, END)
-            RateEntry.delete(0, END)
-            AmtEntry.delete(0, END)
+                CIDEntry.delete(0, END)
+                QtyEntry.delete(0, END)
+                RateEntry.delete(0, END)
+                AmtEntry.delete(0, END)
+                messagebox.showinfo('Great!', 'Sale Added')
 
 
 
@@ -117,13 +123,13 @@ class AddSales:
 
 
         # Center Frames & Labels
-        SalesOrder = LabelFrame(window, text="Add New Sale", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
-        SalesOrder.pack(fill=Y, expand='no')
-        SalesOrder.place(x=140, y=75)
+        AddSalesFr = LabelFrame(window, text="Add New Sale", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
+        AddSalesFr.pack(fill=Y, expand='no')
+        AddSalesFr.place(x=140, y=75)
 
-        CID = Label(SalesOrder, text="CID", font=('roboto', 10, 'bold'))
+        CID = Label(AddSalesFr, text="CID", font=('roboto', 10, 'bold'))
         CID.place(x=20, y=20)
-        CIDEntry = Entry(SalesOrder, bd=2, relief='groove', width=12, font=('roboto', 10, 'bold'))
+        CIDEntry = Entry(AddSalesFr, bd=2, relief='groove', width=12, font=('roboto', 10, 'bold'))
         CIDEntry.place(x=20, y=45)
 
         List = [
@@ -132,34 +138,34 @@ class AddSales:
             'Product 3',
         ]
 
-        Product = Label(SalesOrder, text='Product', font=('roboto', 10, 'bold'))
+        Product = Label(AddSalesFr, text='Product', font=('roboto', 10, 'bold'))
         Product.place(x=140, y=20)
-        Combo = ttk.Combobox(SalesOrder, value=List)
+        Combo = ttk.Combobox(AddSalesFr, value=List)
         Combo.current(0)
         Combo.bind('<<<ComboboxSelected>>>')
         Combo.place(x=140, y=45)
 
-        Qty = Label(SalesOrder, text='Qty', font=('roboto', 10, 'bold'))
+        Qty = Label(AddSalesFr, text='Qty', font=('roboto', 10, 'bold'))
         Qty.place(x=320, y=20)
-        QtyEntry = Entry(SalesOrder, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        QtyEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
         QtyEntry.place(x=320, y=45)
 
-        Rate = Label(SalesOrder, text='Rate', font=('roboto', 10, 'bold'))
+        Rate = Label(AddSalesFr, text='Rate', font=('roboto', 10, 'bold'))
         Rate.place(x=420, y=20)
-        RateEntry = Entry(SalesOrder, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        RateEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
         RateEntry.place(x=420, y=45)
 
-        Amt = Label(SalesOrder, text='Amount', font=('roboto', 10, 'bold'))
+        Amt = Label(AddSalesFr, text='Amount', font=('roboto', 10, 'bold'))
         Amt.place(x=520, y=20)
-        AmtEntry = Entry(SalesOrder, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        AmtEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
         AmtEntry.place(x=520, y=45)
 
-        Date = Label(SalesOrder, text='Date', font=('roboto', 10, 'bold'))
+        Date = Label(AddSalesFr, text='Date', font=('roboto', 10, 'bold'))
         Date.place(x=20, y=90)
-        DateEnt = DateEntry(SalesOrder, selectmode='day')
+        DateEnt = DateEntry(AddSalesFr, selectmode='day')
         DateEnt.place(x=20, y=115)
 
-        Btn = Button(SalesOrder, text='Send', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=SOrder)
+        Btn = Button(AddSalesFr, text='Send', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=Sale)
         Btn.place(x=20, y=175)
 
 

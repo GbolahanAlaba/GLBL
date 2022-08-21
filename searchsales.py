@@ -14,6 +14,7 @@ import addproduct
 import addcustomer
 import addsales
 import searchsales
+import salesbydate
 
 
 class SearchSales:
@@ -26,7 +27,7 @@ class SearchSales:
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
-        self.window.title('TCP Management | Sales Order Page')
+        self.window.title('TCP Management | Sales Search Page')
         self.window.configure(bg='#f7f3f2')
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
@@ -119,12 +120,12 @@ class SearchSales:
         SearchSales.place(x=140, y=75)
 
 
-        Date = Label(SearchSales, text='Search By Date', font=('roboto', 10, 'bold'))
-        Date.place(x=20, y=20)
-        DateEnt = DateEntry(SearchSales, selectmode='day')
-        DateEnt.place(x=150, y=20)
+        SSDate = Label(SearchSales, text='Search By Date', font=('roboto', 10, 'bold'))
+        SSDate.place(x=20, y=20)
+        SSDateEntry = DateEntry(SearchSales, selectmode='day')
+        SSDateEntry.place(x=150, y=20)
 
-        Btn = Button(SearchSales, text='Search', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2')
+        Btn = Button(SearchSales, text='Search', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=self.salebydate)
         Btn.place(x=280, y=18)
 
 
@@ -173,6 +174,12 @@ class SearchSales:
     def searchsale(self):
         win = Toplevel()
         searchsales.SearchSales(win)
+        self.window.withdraw()
+        win.deiconify()
+    
+    def salebydate(self):
+        win = Toplevel()
+        salesbydate.SalesByDate(win)
         self.window.withdraw()
         win.deiconify()
     
