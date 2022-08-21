@@ -13,6 +13,7 @@ import customers
 import addproduct
 import addcustomer
 import addsales
+import searchsales
 
 
 class AddSales:
@@ -110,7 +111,7 @@ class AddSales:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='View By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Search By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.searchsale)
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
         
 
@@ -158,7 +159,7 @@ class AddSales:
         DateEnt = DateEntry(SalesOrder, selectmode='day')
         DateEnt.place(x=20, y=115)
 
-        Btn = Button(SalesOrder, text='Send Order', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=SOrder)
+        Btn = Button(SalesOrder, text='Send', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=SOrder)
         Btn.place(x=20, y=175)
 
 
@@ -201,6 +202,12 @@ class AddSales:
     def adds(self):
         win = Toplevel()
         addsales.AddSales(win)
+        self.window.withdraw()
+        win.deiconify()
+    
+    def searchsale(self):
+        win = Toplevel()
+        searchsales.SearchSales(win)
         self.window.withdraw()
         win.deiconify()
     

@@ -14,7 +14,6 @@ import customers
 import addproduct
 import addcustomer
 import addsales
-import searchsales
 
 class Sales:
     def __init__(self, window):
@@ -132,7 +131,7 @@ class Sales:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Search By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.searchsale)
+        SideMenu = Button(SideFrame, text='View By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
 
 
@@ -242,12 +241,6 @@ class Sales:
     def adds(self):
         win = Toplevel()
         addsales.AddSales(win)
-        self.window.withdraw()
-        win.deiconify()
-    
-    def searchsale(self):
-        win = Toplevel()
-        searchsales.SearchSales(win)
         self.window.withdraw()
         win.deiconify()
     
