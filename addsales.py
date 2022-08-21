@@ -7,13 +7,15 @@ from tkcalendar import DateEntry
 import sqlite3
 import signin
 import dashboard
+import products
 import sales
 import customers
 import addproduct
 import addcustomer
+import addsales
 
 
-class SalesOrder:
+class AddSales:
     def __init__(self, window):
         self.window = window
         width = 800
@@ -103,43 +105,18 @@ class SalesOrder:
         SideFrame.pack(fill=Y, expand='no', anchor=W, padx=10, pady=40)
 
 
-        SideMenu = Button(SideFrame, text='Add Product', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addp)
+        SideMenu = Button(SideFrame, text='View All Sales', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.saless)
         SideMenu.grid(row=0, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=1, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
+        SideMenu = Button(SideFrame, text='View By Date', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=3, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=4, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=5, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Purchase Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=6, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=7, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Generate Code', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=8, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=9, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Add Employee', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=10, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=11, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Payroll', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=12, column=0, padx=10, pady=7)
-
+        
 
 
         # Center Frames & Labels
-        SalesOrder = LabelFrame(window, text="New Sales Order", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
+        SalesOrder = LabelFrame(window, text="Add New Sale", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
         SalesOrder.pack(fill=Y, expand='no')
         SalesOrder.place(x=140, y=75)
 
@@ -149,9 +126,9 @@ class SalesOrder:
         CIDEntry.place(x=20, y=45)
 
         List = [
-            'Sachet Water',
-            'Bottled Water',
-            'Dee Speed',
+            'Product 1',
+            'Product 2',
+            'Product 3',
         ]
 
         Product = Label(SalesOrder, text='Product', font=('roboto', 10, 'bold'))
@@ -191,6 +168,12 @@ class SalesOrder:
         self.window.withdraw()
         win.deiconify()
 
+    def prod(self):
+        win = Toplevel()
+        products.Products(win)
+        self.window.withdraw()
+        win.deiconify()
+
     def saless(self):
         win = Toplevel()
         sales.Sales(win)
@@ -215,16 +198,22 @@ class SalesOrder:
         self.window.withdraw()
         win.deiconify()
 
+    def adds(self):
+        win = Toplevel()
+        addsales.AddSales(win)
+        self.window.withdraw()
+        win.deiconify()
+    
     def logout(self):
         win = Toplevel()
         signin.Signin(win)
         self.window.withdraw()
         win.deiconify()
 
-def salesord():
+def addss():
     window = Tk()
-    SalesOrder(window)
+    AddSales(window)
     window.mainloop()
 
 if __name__ == '__main__':
-    salesord()
+    addss()

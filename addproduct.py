@@ -12,9 +12,9 @@ import dashboard
 import products
 import sales
 import customers
+import addproduct
 import addcustomer
-import salesorder
-
+import addsales
 
 
 class AddProduct:
@@ -110,38 +110,8 @@ class AddProduct:
         SideFrame.pack(fill=Y, expand='no', anchor=W, padx=10, pady=40)
 
 
-        SideMenu = Button(SideFrame, text='Add Product', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='View Products', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.prod)
         SideMenu.grid(row=0, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=1, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
-        SideMenu.grid(row=2, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=3, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.salesor)
-        SideMenu.grid(row=4, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=5, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Purchase Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=6, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=7, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Generate Code', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=8, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=9, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Add Employee', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=10, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=11, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Payroll', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=12, column=0, padx=10, pady=7)
 
 
 
@@ -186,7 +156,7 @@ class AddProduct:
         dashboard.Dashboard(win)
         self.window.withdraw()
         win.deiconify()
-    
+
     def prod(self):
         win = Toplevel()
         products.Products(win)
@@ -205,18 +175,24 @@ class AddProduct:
         self.window.withdraw()
         win.deiconify()
 
+    def addp(self):
+        win = Toplevel()
+        addproduct.AddProduct(win)
+        self.window.withdraw()
+        win.deiconify()
+
     def addc(self):
         win = Toplevel()
         addcustomer.AddCustomer(win)
         self.window.withdraw()
         win.deiconify()
 
-    def salesor(self):
+    def adds(self):
         win = Toplevel()
-        salesorder.SalesOrder(win)
+        addsales.AddSales(win)
         self.window.withdraw()
         win.deiconify()
-
+    
     def logout(self):
         win = Toplevel()
         signin.Signin(win)

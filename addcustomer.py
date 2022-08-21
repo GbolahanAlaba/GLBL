@@ -8,10 +8,12 @@ import messagebox
 import sqlite3
 import signin
 import dashboard
+import products
 import sales
 import customers
 import addproduct
-import salesorder
+import addcustomer
+import addsales
 
 
 
@@ -121,7 +123,7 @@ class AddCustomer:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=3, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.salesor)
+        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.adds)
         SideMenu.grid(row=4, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=5, column=0, padx=10)
@@ -193,12 +195,18 @@ class AddCustomer:
         self.window.withdraw()
         win.deiconify()
 
+    def prod(self):
+        win = Toplevel()
+        products.Products(win)
+        self.window.withdraw()
+        win.deiconify()
+
     def saless(self):
         win = Toplevel()
         sales.Sales(win)
         self.window.withdraw()
         win.deiconify()
-    
+
     def cus(self):
         win = Toplevel()
         customers.Customers(win)
@@ -211,17 +219,24 @@ class AddCustomer:
         self.window.withdraw()
         win.deiconify()
 
-    def salesor(self):
+    def addc(self):
         win = Toplevel()
-        salesorder.SalesOrder(win)
+        addcustomer.AddCustomer(win)
         self.window.withdraw()
         win.deiconify()
 
+    def adds(self):
+        win = Toplevel()
+        addsales.AddSales(win)
+        self.window.withdraw()
+        win.deiconify()
+    
     def logout(self):
         win = Toplevel()
         signin.Signin(win)
         self.window.withdraw()
         win.deiconify()
+
 
 def addcus():
     window = Tk()

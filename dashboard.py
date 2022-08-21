@@ -4,13 +4,15 @@ from datetime import *
 import tkinter as tk
 from time import strftime
 from PIL import ImageTk, Image
+# from functions import *
+import signin
+import dashboard
 import products
 import sales
 import customers
 import addproduct
 import addcustomer
-import salesorder
-import signin
+import addsales
 
 
 
@@ -94,7 +96,7 @@ class Dashboard:
         def SWSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from sales where product = 'Sachet Water'")
+            cursor.execute("select sum(quantity) from sales where product = 'Product 3'")
             records = cursor.fetchall()
 
             count = 0
@@ -111,7 +113,7 @@ class Dashboard:
         def BWSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from sales where product = 'Bottled Water'")
+            cursor.execute("select sum(quantity) from sales where product = 'Product 2'")
             records = cursor.fetchall()
 
             count = 0
@@ -128,7 +130,7 @@ class Dashboard:
         def DSSum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("select sum(quantity) from sales where product = 'Dee Speed'")
+            cursor.execute("select sum(quantity) from sales where product = 'Product 1'")
             records = cursor.fetchall()
 
             count = 0
@@ -321,27 +323,27 @@ class Dashboard:
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=3, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.salesor)
+        SideMenu = Button(SideFrame, text='Add Sales', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.adds)
         SideMenu.grid(row=4, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=5, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Purchase Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Add Employee', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=6, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=7, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Generate Code', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Free Slot 1', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=8, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=9, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Add Employee', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Free Slot 2', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=10, column=0, padx=10, pady=7)
         DivLine = Frame(SideFrame, height=2, width=100, bg='red')
         DivLine.grid(row=11, column=0, padx=10)
 
-        SideMenu = Button(SideFrame, text='Payroll', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
+        SideMenu = Button(SideFrame, text='Free Slot 3', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
         SideMenu.grid(row=12, column=0, padx=10, pady=7)
 
         # Center Frames & Labels
@@ -423,6 +425,12 @@ class Dashboard:
         SWSum()
         BWSum()
         DSSum()
+    
+    def dashb(self):
+        win = Toplevel()
+        dashboard.Dashboard(win)
+        self.window.withdraw()
+        win.deiconify()
 
     def prod(self):
         win = Toplevel()
@@ -454,9 +462,9 @@ class Dashboard:
         self.window.withdraw()
         win.deiconify()
 
-    def salesor(self):
+    def adds(self):
         win = Toplevel()
-        salesorder.SalesOrder(win)
+        addsales.AddSales(win)
         self.window.withdraw()
         win.deiconify()
     
