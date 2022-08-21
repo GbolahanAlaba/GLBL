@@ -32,18 +32,6 @@ class SearchSales:
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
 
-        # Database
-        # def SOrder():
-        #     db = sqlite3.connect('GLBL.db')
-        #     cursor = db.cursor()
-        #     Val = (CIDEntry.get(), Combo.get(), QtyEntry.get(), RateEntry.get(), AmtEntry.get(), DateEnt.get())
-        #     cursor.executemany('insert into Sales (CID, Product, Quantity, Rate, Amount, Date) values(?, ?, ?, ?, ?, ?)', [Val])
-            
-        #     db.commit()
-        #     db.close()
-
-
-
 
 
         # First Frame & Menu

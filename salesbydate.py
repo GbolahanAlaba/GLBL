@@ -53,7 +53,7 @@ class SalesByDate:
         def Sum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute("'select sum(amount) from sales where date = '7/6/22'")
+            cursor.execute("select sum(amount) from sales where date = '7/6/22'")
             records = cursor.fetchall()
 
             count = 0
