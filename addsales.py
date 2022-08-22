@@ -34,9 +34,12 @@ class AddSales:
 
         # Database
         def Sale():
-            if not CIDEntry.get() or not QtyEntry.get() or not RateEntry.get():
+            if not CIDEntry.get() or not QtyEntry.get() or not RateEntry.get() or not AmtEntry.get():
                 messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
+            elif int(not CIDEntry.get()) or int(not QtyEntry.get()) or int(not RateEntry.get()) or int(not AmtEntry.get()):
+                messagebox.showerror('Invalid!', 'Incorrect Field(s) inputs')
+
             else:
                 db = sqlite3.connect('GLBL.db')
                 cursor = db.cursor()
@@ -127,8 +130,7 @@ class AddSales:
         AddSalesFr.pack(fill=Y, expand='no')
         AddSalesFr.place(x=140, y=75)
 
-        CID = Label(AddSalesFr, text="CID", font=('roboto', 10, 'bold'))
-        CID.place(x=20, y=20)
+        CID = Label(AddSalesFr, text="CID", font=('roboto', 10, 'bold')).place(x=20, y=20)
         CIDEntry = Entry(AddSalesFr, bd=2, relief='groove', width=12, font=('roboto', 10, 'bold'))
         CIDEntry.place(x=20, y=45)
 
@@ -145,25 +147,17 @@ class AddSales:
         Combo.bind('<<<ComboboxSelected>>>')
         Combo.place(x=140, y=45)
 
-        Qty = Label(AddSalesFr, text='Qty', font=('roboto', 10, 'bold'))
-        Qty.place(x=320, y=20)
-        QtyEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
-        QtyEntry.place(x=320, y=45)
+        Qty = Label(AddSalesFr, text='Qty', font=('roboto', 10, 'bold')).place(x=320, y=20)
+        QtyEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=320, y=45)
 
-        Rate = Label(AddSalesFr, text='Rate', font=('roboto', 10, 'bold'))
-        Rate.place(x=420, y=20)
-        RateEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
-        RateEntry.place(x=420, y=45)
+        Rate = Label(AddSalesFr, text='Rate', font=('roboto', 10, 'bold')).place(x=420, y=20)
+        RateEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=420, y=45)
 
-        Amt = Label(AddSalesFr, text='Amount', font=('roboto', 10, 'bold'))
-        Amt.place(x=520, y=20)
-        AmtEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
-        AmtEntry.place(x=520, y=45)
+        Amt = Label(AddSalesFr, text='Amount', font=('roboto', 10, 'bold')).place(x=520, y=20)
+        AmtEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=520, y=45)
 
-        Date = Label(AddSalesFr, text='Date', font=('roboto', 10, 'bold'))
-        Date.place(x=20, y=90)
-        DateEnt = DateEntry(AddSalesFr, selectmode='day')
-        DateEnt.place(x=20, y=115)
+        Date = Label(AddSalesFr, text='Date', font=('roboto', 10, 'bold')).place(x=20, y=90)
+        DateEnt = DateEntry(AddSalesFr, selectmode='day').place(x=20, y=115)
 
         Btn = Button(AddSalesFr, text='Send', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=Sale)
         Btn.place(x=20, y=175)

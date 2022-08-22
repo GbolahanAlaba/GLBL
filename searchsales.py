@@ -101,17 +101,14 @@ class SearchSales:
         SideMenu.grid(row=2, column=0, padx=10, pady=7)
         
 
-
         # Center Frames & Labels
         SearchSales = LabelFrame(window, text="Search Sales", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
         SearchSales.pack(fill=Y, expand='no')
         SearchSales.place(x=140, y=75)
 
 
-        SSDate = Label(SearchSales, text='Search By Date', font=('roboto', 10, 'bold'))
-        SSDate.place(x=20, y=20)
-        SSDateEntry = DateEntry(SearchSales, selectmode='day')
-        SSDateEntry.place(x=150, y=20)
+        SSDate = Label(SearchSales, text='Search By Date', font=('roboto', 10, 'bold')).place(x=20, y=20)
+        SSDateEntry = DateEntry(SearchSales, selectmode='day').place(x=150, y=20)
 
         Btn = Button(SearchSales, text='Search', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=self.salebydate)
         Btn.place(x=280, y=18)

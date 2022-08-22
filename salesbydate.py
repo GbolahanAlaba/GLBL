@@ -36,8 +36,11 @@ class SalesByDate:
         def SalesData():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
+            # val = '7/6/22'
+            
+            val = [(SSDateEntry.get())]
             cursor.execute("select sales.sid, customers.name, sales.product, sales.quantity,"
-            "sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID where sales.date = '7/6/22'")
+            "sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID where sales.date = ?", [val])
             records = cursor.fetchall()
             global count
             count = 0
@@ -144,9 +147,9 @@ class SalesByDate:
 
 
         # Center Frames & Labels
-        Sales = LabelFrame(window, text="Search Results", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
-        Sales.pack(fill=Y, expand='no')
-        Sales.place(x=140, y=75)
+        SalesBYdate = LabelFrame(window, text="Search Results", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
+        SalesBYdate.pack(fill=Y, expand='no')
+        SalesBYdate.place(x=140, y=75)
 
         Style = ttk.Style()
         Style.theme_use('clam')
@@ -159,10 +162,10 @@ class SalesByDate:
         Style.map('Treeview', background=[('selected', 'green')])
         # #bd2505
 
-        Tscroll = Scrollbar(Sales, orient='vertical')
+        Tscroll = Scrollbar(SalesBYdate, orient='vertical')
         Tscroll.pack(side=RIGHT, fill=Y)
 
-        SalesView = ttk.Treeview(Sales, yscrollcommand=Tscroll.set, selectmode='extended')
+        SalesView = ttk.Treeview(SalesBYdate, yscrollcommand=Tscroll.set, selectmode='extended')
         SalesView.pack(pady=10, padx=10)
         Tscroll.configure(command=SalesView.yview)
         SalesView['columns'] = ('SID', 'STORE', 'PRODUCT', 'QUANTITY', 'RATE', 'AMOUNT', 'DATE')
@@ -248,7 +251,7 @@ class SalesByDate:
         addsales.AddSales(win)
         self.window.withdraw()
         win.deiconify()
-
+    
     def searchsale(self):
         win = Toplevel()
         searchsales.SearchSales(win)
