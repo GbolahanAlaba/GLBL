@@ -10,10 +10,8 @@ import signin
 import dashboard
 import products
 import sales
-import customers
-import addproduct
 import addcustomer
-import addsales
+
 
 
 class Customers:
@@ -59,7 +57,7 @@ class Customers:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=1, pady=10)
 
-        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'),command=self.prod)
         Menu2.grid(row=0, column=2, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=3, pady=10)
@@ -108,40 +106,9 @@ class Customers:
         SideFrame.pack(fill=Y, expand='no', anchor=W, padx=10, pady=40)
 
 
-        SideMenu = Button(SideFrame, text='Add Product', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addp)
+        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bg='#d11c03', fg='white', bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
         SideMenu.grid(row=0, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=1, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Add Customer', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.addc)
-        SideMenu.grid(row=2, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=3, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Sales Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white', command=self.adds)
-        SideMenu.grid(row=4, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=5, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Purchase Order', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=6, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=7, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Generate Code', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=8, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=9, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Add Employee', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=10, column=0, padx=10, pady=7)
-        DivLine = Frame(SideFrame, height=2, width=100, bg='red')
-        DivLine.grid(row=11, column=0, padx=10)
-
-        SideMenu = Button(SideFrame, text='Payroll', font=('roboto', 9, 'bold'), bd=0, cursor='hand2', activebackground='#d11c03', activeforeground='white')
-        SideMenu.grid(row=12, column=0, padx=10, pady=7)
-
-
+        
 
         # Center Frames & Labels
         Customers = LabelFrame(window, text="Customers Details", height=275, width=648, font=('roboto', 9, 'bold'), fg='green')
@@ -203,17 +170,6 @@ class Customers:
         self.window.withdraw()
         win.deiconify()
 
-    def cus(self):
-        win = Toplevel()
-        customers.Customers(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addp(self):
-        win = Toplevel()
-        addproduct.AddProduct(win)
-        self.window.withdraw()
-        win.deiconify()
 
     def addc(self):
         win = Toplevel()
@@ -221,11 +177,6 @@ class Customers:
         self.window.withdraw()
         win.deiconify()
 
-    def adds(self):
-        win = Toplevel()
-        addsales.AddSales(win)
-        self.window.withdraw()
-        win.deiconify()
     
     def logout(self):
         win = Toplevel()

@@ -9,10 +9,7 @@ import sqlite3
 import signin
 import dashboard
 import products
-import sales
 import customers
-import addproduct
-import addcustomer
 import addsales
 import searchsales
 
@@ -215,29 +212,12 @@ class Sales:
         self.window.withdraw()
         win.deiconify()
 
-    def saless(self):
-        win = Toplevel()
-        sales.Sales(win)
-        self.window.withdraw()
-        win.deiconify()
-
     def cus(self):
         win = Toplevel()
         customers.Customers(win)
         self.window.withdraw()
         win.deiconify()
 
-    def addp(self):
-        win = Toplevel()
-        addproduct.AddProduct(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addc(self):
-        win = Toplevel()
-        addcustomer.AddCustomer(win)
-        self.window.withdraw()
-        win.deiconify()
 
     def adds(self):
         win = Toplevel()

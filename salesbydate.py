@@ -11,11 +11,9 @@ import dashboard
 import products
 import sales
 import customers
-import addproduct
-import addcustomer
 import addsales
-from searchsales import *
-import salesbydate
+import searchsales
+
 
 class SalesByDate:
     def __init__(self, window):
@@ -38,7 +36,7 @@ class SalesByDate:
             cursor = db.cursor()
             # val = '7/6/22'
             
-            val = [(SSDateEntry.get())]
+            val = '7/6/22'
             cursor.execute("select sales.sid, customers.name, sales.product, sales.quantity,"
             "sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID where sales.date = ?", [val])
             records = cursor.fetchall()
@@ -231,18 +229,6 @@ class SalesByDate:
     def cus(self):
         win = Toplevel()
         customers.Customers(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addp(self):
-        win = Toplevel()
-        addproduct.AddProduct(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addc(self):
-        win = Toplevel()
-        addcustomer.AddCustomer(win)
         self.window.withdraw()
         win.deiconify()
 

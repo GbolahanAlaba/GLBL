@@ -11,9 +11,6 @@ import dashboard
 import products
 import sales
 import customers
-import addproduct
-import addcustomer
-import addsales
 import searchsales
 
 
@@ -32,14 +29,28 @@ class AddSales:
         self.window.wm_iconbitmap('FMCG.ico')
         self.window.resizable(0, 0)
 
+        # db = sqlite3.connect('GLBL.db')
+        # cursor = db.cursor()
+        # cursor.execute('select cid from customers')
+        # records = cursor.fetchall()
+        # # a = list(records)
+        # print(records)
+        
+        
+        # for rec in a:
+        #     r = rec
+        #     rr = list(r)
+        #     print(rr)
+              
+        # db.commit()
+        # db.close()
+
         # Database
+        
         def Sale():
             if not CIDEntry.get() or not QtyEntry.get() or not RateEntry.get() or not AmtEntry.get():
                 messagebox.showerror('Invalid!', 'Field(s) cannot\nbe empty')
             
-            elif int(not CIDEntry.get()) or int(not QtyEntry.get()) or int(not RateEntry.get()) or int(not AmtEntry.get()):
-                messagebox.showerror('Invalid!', 'Incorrect Field(s) inputs')
-
             else:
                 db = sqlite3.connect('GLBL.db')
                 cursor = db.cursor()
@@ -66,7 +77,7 @@ class AddSales:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=1, pady=10)
 
-        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu2 = Button(MenuFrame, text = 'Products', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.prod)
         Menu2.grid(row=0, column=2, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=3, pady=10)
@@ -130,7 +141,8 @@ class AddSales:
         AddSalesFr.pack(fill=Y, expand='no')
         AddSalesFr.place(x=140, y=75)
 
-        CID = Label(AddSalesFr, text="CID", font=('roboto', 10, 'bold')).place(x=20, y=20)
+        CID = Label(AddSalesFr, text="CID", font=('roboto', 10, 'bold'))
+        CID.place(x=20, y=20)
         CIDEntry = Entry(AddSalesFr, bd=2, relief='groove', width=12, font=('roboto', 10, 'bold'))
         CIDEntry.place(x=20, y=45)
 
@@ -148,16 +160,20 @@ class AddSales:
         Combo.place(x=140, y=45)
 
         Qty = Label(AddSalesFr, text='Qty', font=('roboto', 10, 'bold')).place(x=320, y=20)
-        QtyEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=320, y=45)
+        QtyEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        QtyEntry.place(x=320, y=45)
 
         Rate = Label(AddSalesFr, text='Rate', font=('roboto', 10, 'bold')).place(x=420, y=20)
-        RateEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=420, y=45)
+        RateEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        RateEntry.place(x=420, y=45)
 
         Amt = Label(AddSalesFr, text='Amount', font=('roboto', 10, 'bold')).place(x=520, y=20)
-        AmtEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold')).place(x=520, y=45)
+        AmtEntry = Entry(AddSalesFr, bd=2, relief='groove', width=10, font=('roboto', 10, 'bold'))
+        AmtEntry.place(x=520, y=45)
 
         Date = Label(AddSalesFr, text='Date', font=('roboto', 10, 'bold')).place(x=20, y=90)
-        DateEnt = DateEntry(AddSalesFr, selectmode='day').place(x=20, y=115)
+        DateEnt = DateEntry(AddSalesFr, selectmode='day')
+        DateEnt.place(x=20, y=115)
 
         Btn = Button(AddSalesFr, text='Send', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=Sale)
         Btn.place(x=20, y=175)
@@ -184,24 +200,6 @@ class AddSales:
     def cus(self):
         win = Toplevel()
         customers.Customers(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addp(self):
-        win = Toplevel()
-        addproduct.AddProduct(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def addc(self):
-        win = Toplevel()
-        addcustomer.AddCustomer(win)
-        self.window.withdraw()
-        win.deiconify()
-
-    def adds(self):
-        win = Toplevel()
-        addsales.AddSales(win)
         self.window.withdraw()
         win.deiconify()
     

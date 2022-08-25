@@ -164,10 +164,14 @@ class Products:
         PP2 = Label(LiveUpF, text='Product 2:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=50)
         PP3 = Label(LiveUpF, text='Product 3:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=70)
         PP4 = Label(LiveUpF, text='Product 4:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=90)
+        PP5 = Label(LiveUpF, text='Product 5:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=110)
+        PP6 = Label(LiveUpF, text='Product 6:', font=('roboto', 10, 'bold'), fg='green').place(x=5, y=130)
         PPR1 = Label(LiveUpF, text='120000', font=('roboto', 10, 'bold')).place(x=80, y=30)
         PPR2 = Label(LiveUpF, text='130000', font=('roboto', 10, 'bold')).place(x=80, y=50)
         PPR3 = Label(LiveUpF, text='140000', font=('roboto', 10, 'bold')).place(x=80, y=70)
         PPR4 = Label(LiveUpF, text='150000', font=('roboto', 10, 'bold')).place(x=80, y=90)
+        PPR5 = Label(LiveUpF, text='160000', font=('roboto', 10, 'bold')).place(x=80, y=110)
+        PPR6 = Label(LiveUpF, text='170000', font=('roboto', 10, 'bold')).place(x=80, y=130)
         
 
         # SrcDate = DateEntry(window, selectmode='day')
