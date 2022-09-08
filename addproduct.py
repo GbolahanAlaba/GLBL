@@ -71,27 +71,27 @@ class AddProduct:
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=5, pady=10)
 
-        Menu4 = Button(MenuFrame, text = 'Inventory', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu4 = Button(MenuFrame, text = 'Customers', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.cus)
         Menu4.grid(row=0, column=6, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=7, pady=10)
 
-        Menu5 = Button(MenuFrame, text = 'Expenses', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu5 = Button(MenuFrame, text = 'Vendors', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
         Menu5.grid(row=0, column=8, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=9, pady=10)
 
-        Menu6 = Button(MenuFrame, text = 'Customers', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.cus)
+        Menu6 = Button(MenuFrame, text = 'Inventory', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
         Menu6.grid(row=0, column=10, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=11, pady=10)
 
-        Menu7 = Button(MenuFrame, text = 'Employees', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
+        Menu7 = Button(MenuFrame, text = 'Expenses', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'))
         Menu7.grid(row=0, column=12, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=13, pady=10)
 
-        Menu9 = Button(MenuFrame, text = 'Log Out', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'),command=self.logout)
+        Menu9 = Button(MenuFrame, text = 'Log Out', bd=0, cursor='hand2', activebackground='green', activeforeground='white', font=('roboto', 9, 'bold'), command=self.logout)
         Menu9.grid(row=0, column=14, padx=5, pady=10)
         DivLine = Frame(MenuFrame, height=15, width=1, bg='red')
         DivLine.grid(row=0,column=15, pady=10)
