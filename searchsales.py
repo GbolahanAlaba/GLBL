@@ -105,11 +105,13 @@ class SearchSales:
 
 
         SSDate = Label(SearchSales, text='Search By Date', font=('roboto', 10, 'bold')).place(x=20, y=20)
-        SSDateEntry = DateEntry(SearchSales, selectmode='day').place(x=150, y=20)
+        SSDateEntry = DateEntry(SearchSales, selectmode='day')
+        SSDateEntry.place(x=150, y=20)
 
         Btn = Button(SearchSales, text='Search', font=('roboto', 9, 'bold'), bg='green', fg='white', cursor='hand2', command=self.salebydate)
         Btn.place(x=280, y=18)
 
+        
 
     def dashb(self):
         win = Toplevel()
