@@ -11,7 +11,7 @@ import products
 import sales
 import customers
 import addsales
-import salesbydate
+import salessearchresult
 
 
 class SearchSales:
@@ -145,7 +145,7 @@ class SearchSales:
     
     def salebydate(self):
         win = Toplevel()
-        salesbydate.SalesByDate(win)
+        salessearchresult.SalesByDate(win)
         self.window.withdraw()
         win.deiconify()
     

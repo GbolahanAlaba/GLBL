@@ -49,7 +49,7 @@ class Sales:
         def Sum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            cursor.execute('select sum(amount) from sales')
+            cursor.execute("select sum(amount) from sales")
             records = cursor.fetchall()
 
             count = 0

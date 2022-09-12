@@ -12,7 +12,8 @@ import products
 import sales
 import customers
 import addsales
-from searchsales import *
+import searchsales
+import salessearchresult
 
 
 
@@ -36,9 +37,7 @@ class SalesByDate:
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
             
-            # val = '7/6/22'
-            
-            val = SearchSales.SSDateEntry.get()
+            val = '7/6/22'
             cursor.execute("select sales.sid, customers.name, sales.product, sales.quantity,"
             "sales.rate, sales.amount, sales.date from sales inner join customers on sales.CID = customers.CID where sales.date = ?", [val])
             records = cursor.fetchall()
@@ -56,8 +55,8 @@ class SalesByDate:
         def Sum():
             db = sqlite3.connect('GLBL.db')
             cursor = db.cursor()
-            val = SearchSales.SSDateEntry.get()
-            cursor.execute("select sum(amount) from sales where date = ?", val)
+            val = '7/6/22'
+            cursor.execute("select sum(amount) from sales where date = ?", [val])
             records = cursor.fetchall()
 
             count = 0
@@ -69,6 +68,8 @@ class SalesByDate:
 
             db.commit()
             db.close()
+
+
 
 
 
@@ -244,7 +245,7 @@ class SalesByDate:
     
     def salebydate(self):
         win = Toplevel()
-        salesbydate.SalesByDate(win)
+        salessearchresult.SalesByDate(win)
         self.window.withdraw()
         win.deiconify()
 
@@ -255,10 +256,10 @@ class SalesByDate:
         self.window.withdraw()
         win.deiconify()
 
-def salesbydate():
+def Ssearchresult():
     window = Tk()
     SalesByDate(window)
     window.mainloop()
 
 if __name__ == '__main__':
-    salesbydate()
+    Ssearchresult()
