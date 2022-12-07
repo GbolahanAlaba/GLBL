@@ -6,9 +6,6 @@ import sqlite3
 import signin
 
 
-
-
-
 class Signup:
     def __init__(self, window):
         self.window = window
