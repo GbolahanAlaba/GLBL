@@ -112,7 +112,6 @@ class Signup:
 
 
 
-
 def signUP():
     window = Tk()
     Signup(window)
