@@ -15,7 +15,7 @@ class Signup:
         width = 650
         height = 320
         sw = self.window.winfo_screenwidth()
-        sh = self.window.winfo_screenwidth()
+        sh = self.window.winfo_screenheight()
         x = (sw/4)
         y = (sh/7)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')

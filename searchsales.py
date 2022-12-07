@@ -20,7 +20,7 @@ class SearchSales:
         width = 800
         height = 500
         sw = self.window.winfo_screenwidth()
-        sh = self.window.winfo_screenwidth()
+        sh = self.window.winfo_screenheight()
         x = (sw/5)
         y = (sh/11)
         self.window.geometry(f'{width}x{height}+{int(x)}+{int(y)}')
