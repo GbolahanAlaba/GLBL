@@ -13,7 +13,6 @@ import sales
 import addcustomer
 
 
-
 class Customers:
     def __init__(self, window):
         self.window = window
